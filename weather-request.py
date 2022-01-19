@@ -7,7 +7,7 @@ from config import open_weather_token
 def get_weahter(city, open_weather_token):
 
     code_to_emoji = {
-        "Clear": "Ясно \U00002600 ",
+        "Clear": "Ясно \U00002600  ",
         "Clouds": "Облачно \U00002601",
         "Rain": "Дождь U0001F327",
         "Drizzle": "Морось \U00002614",

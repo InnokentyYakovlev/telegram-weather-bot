@@ -1,24 +1,19 @@
+from aiogram import types, Dispatcher
+from create_bot import dp, open_weather_token
 import requests
-from config import open_weather_token, tg_bot_token
-from aiogram import Bot, types
-from aiogram.dispatcher import Dispatcher
-from aiogram.utils import executor
-
-bot = Bot(token=tg_bot_token)
-dp = Dispatcher(bot)
 
 
-@dp.message_handler(commands=["start"])
+# @dp.message_handler(commands=["start"])
 async def start_command(message: types.Message):
     await message.reply("Укажите название города для вывода погоды ")
 
 
-@dp.message_handler()
+# @dp.message_handler()
 async def get_weather(message: types.Message):
     code_to_smile = {
         "Clear": "Ясно \U00002600 ",
         "Clouds": "Облачно \U00002601",
-        "Rain": "Дождь U0001F327",
+        "Rain": "Дождь \U0001F327",
         "Drizzle": "Морось \U00002614",
         "Thunderstorm": "Гроза 	\U000026C8",
         "Snow": "Снег \U0001F328 \U0000FE0F",
@@ -67,5 +62,6 @@ async def get_weather(message: types.Message):
         await message.reply("Проверьте название города")
 
 
-if __name__ == '__main__':
-    executor.start_polling(dp)
+def register_handlers_default(dp: Dispatcher):
+    dp.register_message_handler(start_command, commands=['start'])
+    dp.register_message_handler(get_weather)

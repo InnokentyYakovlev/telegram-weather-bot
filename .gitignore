@@ -1,4 +1,4 @@
-config.py
 venv
 __pycache__
 .idea
+run_bot.bat
